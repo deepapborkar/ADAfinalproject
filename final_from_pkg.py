@@ -26,11 +26,13 @@ def rmse_function(actual, estimate):
     rmse_val (float): root mean square error
     '''
     rmse_val = 0
+    count = 0
     for row, col in np.ndindex(actual.shape):
         # only calculate RMSE for ratings that exist
         if actual[row, col] != 0:
             rmse_val += (actual[row, col] - estimate[row, col])**2
-    rmse_val = np.sqrt(rmse_val)
+            count += 1
+    rmse_val = np.sqrt(rmse_val/count)
     return rmse_val
 
 def matrix_factorization(sparse_matrix):
@@ -116,6 +118,10 @@ plt.plot(samples, rmse_nmf_lst, label = 'NMF')
 plt.legend()
 plt.savefig('plot_pkg.png')
 
+print('RMSE for SVD')
+print(rmse_svd_lst[-1])
+print('RMSE for NMF')
+print(rmse_nmf_lst[-1])
 
 # section for testing purposes
 

@@ -23,11 +23,13 @@ def rmse_function(actual, estimate):
     rmse_val (float): root mean square error
     '''
     rmse_val = 0
+    count = 0
     for row, col in np.ndindex(actual.shape):
         # only calculate RMSE for ratings that exist
         if actual[row, col] != 0:
             rmse_val += (actual[row, col] - estimate[row, col])**2
-    rmse_val = np.sqrt(rmse_val)
+            count += 1
+    rmse_val = np.sqrt(rmse_val/count)
     return rmse_val
 
 def sgd_svd(arr, n_components, lr, epochs):
@@ -204,13 +206,15 @@ sparse_matrix = sparse.csr_matrix((df.rating.values, (df.user_id.values, df.movi
 # convert to a numpy array
 sparse_matrix = sparse.csr_matrix.toarray(sparse_matrix)
 
+print(sparse_matrix.shape)
+
 #print(sparse_matrix)
 
 # parameters for SVD and NMF
 num_components = matrix_rank(sparse_matrix) # num_components is usually the rank of the matrix
 #print(num_components)
 learning_rate = 0.001
-num_epochs = 3000
+num_epochs = 2000
 # create a list of epochs for plotting purposes
 epochs_lst = [i for i in range(num_epochs)]
 
