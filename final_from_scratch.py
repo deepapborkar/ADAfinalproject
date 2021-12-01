@@ -206,7 +206,7 @@ sparse_matrix = sparse.csr_matrix((df.rating.values, (df.user_id.values, df.movi
 # convert to a numpy array
 sparse_matrix = sparse.csr_matrix.toarray(sparse_matrix)
 
-print(sparse_matrix.shape)
+#print(sparse_matrix.shape)
 
 #print(sparse_matrix)
 
@@ -214,7 +214,7 @@ print(sparse_matrix.shape)
 num_components = matrix_rank(sparse_matrix) # num_components is usually the rank of the matrix
 #print(num_components)
 learning_rate = 0.001
-num_epochs = 2000
+num_epochs = 3000
 # create a list of epochs for plotting purposes
 epochs_lst = [i for i in range(num_epochs)]
 
