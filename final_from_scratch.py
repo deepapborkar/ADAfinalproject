@@ -212,7 +212,7 @@ sparse_matrix = sparse.csr_matrix.toarray(sparse_matrix)
 
 # parameters for SVD and NMF
 num_components = matrix_rank(sparse_matrix) # num_components is usually the rank of the matrix
-#print(num_components)
+print(num_components)
 learning_rate = 0.001
 num_epochs = 3000
 # create a list of epochs for plotting purposes
