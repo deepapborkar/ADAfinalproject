@@ -11,7 +11,7 @@ final_from_scratch.py
 final_from_pkg.py
 data/<data files>
 plot/<plots>
-ADAFinalProject.pdf
+ADA_Final_Project.pdf
 
 III. DESCRIPTION
 -------------------------
